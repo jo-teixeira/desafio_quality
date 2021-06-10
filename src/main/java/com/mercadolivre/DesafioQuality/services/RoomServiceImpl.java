@@ -4,12 +4,11 @@ import com.mercadolivre.DesafioQuality.requests.RoomRequest;
 import com.mercadolivre.DesafioQuality.responses.RoomSizeResponse;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RoomServiceImpl implements RoomService{
-
     @Override
     public Double getRoomSize(RoomRequest roomRequest){
         return roomRequest.getRoomWidth() * roomRequest.getRoomLength();
@@ -17,10 +16,7 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public List<RoomSizeResponse> getAllRoomsSize(List<RoomRequest> rooms){
-        List<RoomSizeResponse> roomsList = new ArrayList<>();
-        for (RoomRequest room: rooms) {
-            roomsList.add(new RoomSizeResponse(room.getRoomName(), this.getRoomSize(room)));
-        }
-        return roomsList;
+        return rooms.stream().map(room -> new RoomSizeResponse(room.getRoomName(),
+                                  this.getRoomSize(room))).collect(Collectors.toList());
     }
 }

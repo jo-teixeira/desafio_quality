@@ -21,4 +21,12 @@ public class ControllerExceptionHandler {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
+
+    @ExceptionHandler(DistrictNotFoundException.class)
+    public ResponseEntity<StandardError> validation(DistrictNotFoundException e,
+                                                    HttpServletRequest httpServletRequest) {
+        ValidationError err = new ValidationError(HttpStatus.NOT_FOUND.value(),
+                e.getMessage(), System.currentTimeMillis(), httpServletRequest.getRequestURI());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
 }

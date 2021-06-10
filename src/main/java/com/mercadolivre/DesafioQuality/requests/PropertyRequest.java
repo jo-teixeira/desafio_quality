@@ -1,12 +1,7 @@
 package com.mercadolivre.DesafioQuality.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mercadolivre.DesafioQuality.exceptions.StandardError;
-import com.mercadolivre.DesafioQuality.repositories.DistrictRepository;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -29,6 +24,4 @@ public class PropertyRequest {
 
     @Valid
     private List<RoomRequest> rooms;
-
-
 }

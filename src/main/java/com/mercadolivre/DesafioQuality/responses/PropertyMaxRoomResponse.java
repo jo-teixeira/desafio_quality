@@ -15,10 +15,4 @@ public class PropertyMaxRoomResponse {
     private String roomName;
     @JsonProperty(value = "room_size")
     private Double roomSize;
-
-    public static Comparator<PropertyMaxRoomResponse> PostInfoResponseNameComparator = new Comparator<PropertyMaxRoomResponse>() {
-        public int compare(PropertyMaxRoomResponse roomA, PropertyMaxRoomResponse roomB) {
-            return roomA.getRoomSize().compareTo(roomB.getRoomSize());
-        }
-    };
 }
