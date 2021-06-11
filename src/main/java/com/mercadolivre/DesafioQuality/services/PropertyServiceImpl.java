@@ -2,16 +2,10 @@ package com.mercadolivre.DesafioQuality.services;
 
 import com.mercadolivre.DesafioQuality.repositories.DistrictRepository;
 import com.mercadolivre.DesafioQuality.requests.PropertyRequest;
-import com.mercadolivre.DesafioQuality.requests.RoomRequest;
-import com.mercadolivre.DesafioQuality.responses.PropertyMaxRoomResponse;
-import com.mercadolivre.DesafioQuality.responses.PropertyRoomSizeResponse;
-import com.mercadolivre.DesafioQuality.responses.PropertySizeResponse;
-import com.mercadolivre.DesafioQuality.responses.PropertyValueResponse;
+import com.mercadolivre.DesafioQuality.responses.PropertyResponse;
+import com.mercadolivre.DesafioQuality.responses.RoomResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -21,36 +15,37 @@ public class PropertyServiceImpl implements PropertyService {
     private final RoomService roomService;
 
     @Override
-    public PropertySizeResponse getPropertySize(PropertyRequest propertyRequest){
-        return new PropertySizeResponse(propertyRequest.getPropName(),
-                                        this.calculatePropSize(propertyRequest.getRooms()));
+    public PropertyResponse getPropertyInfo(PropertyRequest propertyRequest) {
+        RoomResponse maxRoom = this.getMaxRoomProperty(propertyRequest);
+        return new PropertyResponse(propertyRequest.getPropName(),
+                this.getRoomsResponseProperty(propertyRequest),
+                propertyRequest.getPropDistrict(),
+                DistrictRepository.DISTRICT_VALUES.get(propertyRequest.getPropDistrict()),
+                this.getPropertySize(propertyRequest),
+                this.getPropertyValue(propertyRequest, this.getPropertySize(propertyRequest)),
+                maxRoom.getRoomName(),
+                maxRoom.getRoomSize());
     }
 
     @Override
-    public PropertyValueResponse getPropertyValue(PropertyRequest propertyRequest) {
-        DistrictRepository.findById(propertyRequest.getPropDistrict());
-        Double propSize = this.calculatePropSize(propertyRequest.getRooms());
-        String districtName = propertyRequest.getPropDistrict();
-        Double districtValue = DistrictRepository.DISTRICT_VALUES.get(districtName);
-        return new PropertyValueResponse(propertyRequest.getPropName(), districtName, districtValue,
-                propSize, propSize * districtValue);
+    public Double getPropertyValue(PropertyRequest propertyRequest, Double propSize) {
+        return DistrictRepository.findById(propertyRequest.getPropDistrict()) * propSize;
     }
 
     @Override
-    public PropertyMaxRoomResponse getMaxRoomProperty(PropertyRequest propertyRequest){
-        RoomRequest maxRoom = Collections.max(propertyRequest.getRooms(),
-                Comparator.comparing(this.roomService::getRoomSize));
-        return new PropertyMaxRoomResponse(propertyRequest.getPropName(),
-                maxRoom.getRoomName(), this.roomService.getRoomSize(maxRoom));
+    public RoomResponse getMaxRoomProperty(PropertyRequest propertyRequest) {
+        return this.roomService.getMaxRoom(propertyRequest.getRooms());
     }
 
     @Override
-    public PropertyRoomSizeResponse getRoomsSizeProperty(PropertyRequest propertyRequest){
-        return new PropertyRoomSizeResponse(propertyRequest.getPropName(),
-                                            this.roomService.getAllRoomsSize(propertyRequest.getRooms()));
+    public List<RoomResponse> getRoomsResponseProperty(PropertyRequest propertyRequest) {
+        return this.roomService.getAllRoomsResponse(propertyRequest.getRooms());
     }
 
-    private Double calculatePropSize(List<RoomRequest> roomList){
-        return roomList.stream().map(this.roomService::getRoomSize).mapToDouble(Double::doubleValue).sum();
+    @Override
+    public Double getPropertySize(PropertyRequest propertyRequest) {
+        return this.roomService.getAllRoomsResponse(propertyRequest.getRooms()).stream()
+                                                                               .map(RoomResponse::getRoomSize)
+                                                                               .reduce(0.0, Double::sum);
     }
 }

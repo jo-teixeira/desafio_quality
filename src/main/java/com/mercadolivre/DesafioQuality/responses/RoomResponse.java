@@ -4,13 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.Comparator;
-
 @AllArgsConstructor
 @Data
-public class PropertyMaxRoomResponse {
-    @JsonProperty(value = "prop_name")
-    private String propName;
+public class RoomResponse {
     @JsonProperty(value = "room_name")
     private String roomName;
     @JsonProperty(value = "room_size")
