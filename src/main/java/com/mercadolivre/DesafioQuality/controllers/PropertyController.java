@@ -22,6 +22,6 @@ public class PropertyController {
 
     @PostMapping("/info")
     public ResponseEntity<PropertyResponse> getPropertyInfo(@RequestBody @Valid PropertyRequest propertyRequest){
-        return ResponseEntity.status(HttpStatus.CREATED).body(propertyService.getPropertyInfo(propertyRequest));
+        return ResponseEntity.status(HttpStatus.OK).body(propertyService.getPropertyInfo(propertyRequest));
     }
 }
