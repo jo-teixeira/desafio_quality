@@ -99,7 +99,7 @@ Descrição dos atributos calculados:
 
 Nome | Valor por metro quadrado
 --- | --- | 
-Bom Retiro | R$40.00|
+Bom Retiro | R$ 40.00|
 Caravelas | R$ 5.00 |
 Cariru | R$ 65.00 | 
 Castelo | R$ 100.00 | 
