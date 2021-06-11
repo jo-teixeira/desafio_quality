@@ -12,9 +12,8 @@ import java.util.Optional;
 @Data
 @Repository
 public class DistrictRepository {
-    public static final Map<String, Double> DISTRICT_VALUES;
+    public static final Map<String, Double> DISTRICT_VALUES = new HashMap<>();
     static {
-        DISTRICT_VALUES = new HashMap<>();
         DISTRICT_VALUES.put("Bom Retiro", 40.0);
         DISTRICT_VALUES.put("Caravelas", 5.0);
         DISTRICT_VALUES.put("Cariru", 65.0);
