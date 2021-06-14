@@ -10,10 +10,13 @@ cômodo contém um nome, uma largura e um comprimento.
 
 Requisitos funcionais implementados:
 * **US-0001:** Calcule o total de metros quadrados de uma propriedade;
-* **US-0002:** Indique o valor de uma propriedade com base em seus cômodos e medidas. Lembre-se que os preços por metro quadrado são determinados de acordo com a vizinhança;
+* **US-0002:** Indique o valor de uma propriedade com base em seus cômodos e medidas. Lembre-se que os preços por metro 
+  quadrado são determinados de acordo com a vizinhança;
 * **US-0003:** Determine qual é o maior cômodo;
 * **US-0004:** Determinar a quantidade de metros quadrados que tem cada cômodo de uma propriedade.
 
+**OBS: EXCLUSIVAMENTE PARA ESTE DESAFIO**, não foi implementado a camada de modelo (os dados são representados por 
+uma request e por nao haver persistência de dados, o resultado processado é enviado através de uma response).
 
 ## Testes implementados
 
