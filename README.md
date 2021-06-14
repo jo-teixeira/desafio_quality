@@ -30,7 +30,8 @@ uma request e por nao haver persistência de dados, o resultado processado é en
 * **shouldReturnTheMaxRoomSizeInRoomsSizeList:** verifica se *RoomService.getMaxRoom()* retorna a response correta, com 
   o tamanho do maior quarto;
 * **shouldReturnTheSumOfRoomsSizeList:** verifica se *RoomService.getAllRoomsResponse()* retorna o tamanho 
-  correto dos quartos (este teste verifica se a soma do tamanho dos quartos está correta);
+  correto de todos os quartos (este teste verifica o tamanho de cada quarto através da função *.equals()* implementada
+  em RoomResponse);
   
 **DistrictServiceTest.java**
 
