@@ -28,14 +28,14 @@ public class RoomServiceTest {
     }
 
     @Test
-    void checkGetMaxRoomTest() {
+    void shouldReturnTheMaxRoomSizeInRoomsSizeList() {
         RoomResponse roomResponse = this.roomService.getMaxRoom(this.roomsList);
 
         assertEquals(60.0, roomResponse.getRoomSize());
     }
 
     @Test
-    void checkAllRoomsSize() {
+    void shouldReturnTheSumOfRoomsSizeList() {
         List<RoomResponse> roomResponse = this.roomService.getAllRoomsResponse(this.roomsList);
 
         Double roomsSize = roomResponse.stream().map(RoomResponse::getRoomSize).reduce(0.0, Double::sum);

@@ -27,7 +27,7 @@ public class PropertyServiceTest {
     private final PropertyRequest propertyRequest = new PropertyRequest();
 
     @Test
-    void checkIfPropertySizeIsCorrectTest(){
+    void shouldReturnTheSumOfSizesInPropertyRoomSizeList(){
         List<RoomResponse> roomsList = Arrays.asList(new RoomResponse("RoomA", 20.0),
                                                      new RoomResponse("roomB", 60.0),
                                                      new RoomResponse("roomC", 35.0));

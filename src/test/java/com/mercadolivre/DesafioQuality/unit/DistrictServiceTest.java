@@ -23,14 +23,14 @@ class DistrictServiceTest {
     private DistrictServiceImpl districtService;
 
     @Test
-    void checkIfDistrictNotExistsTest() {
+    void shouldThrowDistrictNotFoundExceptionWhenDistrictNotExists() {
         when(this.districtRepository.findByName(anyString())).thenReturn(Optional.empty());
 
         assertThrows(DistrictNotFoundException.class, () -> this.districtService.findByDistrictName("Nao existe"));
     }
 
     @Test
-    void checkIfDistrictExistsTest() {
+    void shouldReturnDistrictValueWhenDistrictExists() {
         when(this.districtRepository.findByName(anyString())).thenReturn(java.util.Optional.of(5.0));
 
         assertEquals(5.0, this.districtService.findByDistrictName("Caravelas"));

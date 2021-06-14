@@ -19,7 +19,7 @@ public class PropertyControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void checkIfPropertySizeIsCorrectTest() throws Exception {
+    void checkAllCalculatedAttributesInResponse() throws Exception {
         String request = "{\n" +
                 "    \"prop_name\": \"Casa do joao\",\n" +
                 "    \"prop_district\": \"Caravelas\",\n" +
@@ -74,7 +74,7 @@ public class PropertyControllerTest {
     }
 
     @Test
-    void checkAllValidationExceptionsTest() throws Exception {
+    void shouldThrowAllValidationErrorsInResponse() throws Exception {
         String request = "{\n" +
                 "    \"prop_name\": \"Propriedade com tamanho muito grandeeee" +
                 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\n" +
@@ -130,7 +130,7 @@ public class PropertyControllerTest {
     }
 
     @Test
-    void checkDistrictNotFoundInRequestTest() throws Exception {
+    void shouldThrowDistrictNotFoundExceptionInResponse() throws Exception {
         String request = "{\n" +
                 "    \"prop_name\": \"Casa do joao\",\n" +
                 "    \"prop_district\": \"QUENAOEXISTE\",\n" +

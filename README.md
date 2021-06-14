@@ -19,31 +19,32 @@ Requisitos funcionais implementados:
 
 **PropertyServiceTest.java**
 
-* **checkIfPropertySizeIsCorrectTest:** verifica se *PropertyService.getPropertySize()* retorna o tamanho correto de uma 
-  propriedade;
+* **shouldReturnTheSumOfSizesInPropertyRoomSizeList:** verifica se *PropertyService.getPropertySize()* retorna o tamanho 
+  correto de uma propriedade;
   
 **RoomServiceTest.java**
 
-* **checkGetMaxRoomTest:** verifica se *RoomService.getMaxRoom()* retorna a response correta, com o tamanho do maior 
-  quarto;
-* **checkAllRoomsSize:** verifica se *RoomService.getAllRoomsResponse()* retorna o tamanho correto dos quartos (este 
-  teste verifica se a soma do tamanho dos quartos está correta);
+* **shouldReturnTheMaxRoomSizeInRoomsSizeList:** verifica se *RoomService.getMaxRoom()* retorna a response correta, com 
+  o tamanho do maior quarto;
+* **shouldReturnTheSumOfRoomsSizeList:** verifica se *RoomService.getAllRoomsResponse()* retorna o tamanho 
+  correto dos quartos (este teste verifica se a soma do tamanho dos quartos está correta);
   
 **DistrictServiceTest.java**
 
-* **checkIfDistrictNotExistsTest:** verifica se *DistrictService.findByName()* retorna uma DistrictNotFoundException 
-  quando é informado um nome de um bairro que não existe;
-* **checkIfDistrictExistsTest:** verifica se *DistrictService.findByName()* retorna o valor correto de um bairro;
+* **shouldThrowDistrictNotFoundExceptionWhenDistrictNotExists:** verifica se *DistrictService.findByName()* retorna uma 
+  *DistrictNotFoundException* quando é informado um nome de um bairro que não existe;
+* **shouldReturnDistrictValueWhenDistrictExists:** verifica se *DistrictService.findByName()* retorna o valor correto 
+  de um bairro;
   
 **Testes de integração**
 
-* **checkIfPropertySizeIsCorrectTest:** verifica todo o funcionamento da API através de um POST no endpoint 
+* **checkAllCalculatedAttributesInResponse:** verifica todo o funcionamento da API através de um POST no endpoint 
   "/property/info", comparando por completo, a response retornada e a response esperada;
-* **checkAllValidationExceptionsTest:** envia uma request com 4 erros de validação (nome de propriedade maior que 30 
-  caracteres, nome de quarto com letra minúscula, quarto com largura maior que 25 e com comprimento nulo) e verifica 
-  se todos eles estão contidos na response;
-* **checkDistrictNotFoundInRequestTest:** envia uma request com um nome de bairro inexistente e checa se a exceção 
-  *DistrictNotFoundException* foi lançada.
+* **shouldThrowAllValidationErrorsInResponse:** envia uma request com 4 erros de validação (nome de propriedade maior 
+  que 30 caracteres, nome de quarto com letra minúscula, quarto com largura maior que 25 e com comprimento nulo) e 
+  verifica se todos eles estão contidos na response;
+* **shouldThrowDistrictNotFoundExceptionInResponse:** envia uma request com um nome de bairro inexistente e checa se a 
+  exceção *DistrictNotFoundException* foi lançada.
 
 ## Executar
 
