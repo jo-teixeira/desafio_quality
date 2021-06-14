@@ -19,7 +19,7 @@ Requisitos funcionais implementados:
 
 **PropertyServiceTest.java**
 
-* **checkIfPropertySizeIsCorrectTest:** verifica se *PropertyServicegetPropertySize()* retorna o tamanho correto de uma 
+* **checkIfPropertySizeIsCorrectTest:** verifica se *PropertyService.getPropertySize()* retorna o tamanho correto de uma 
   propriedade;
   
 **RoomServiceTest.java**
@@ -27,7 +27,7 @@ Requisitos funcionais implementados:
 * **checkGetMaxRoomTest:** verifica se *RoomService.getMaxRoom()* retorna a response correta, com o tamanho do maior 
   quarto;
 * **checkAllRoomsSize:** verifica se *RoomService.getAllRoomsResponse()* retorna o tamanho correto dos quartos (este 
-  teste verifica se soma total do tamanho dos quartos está correta, seria mais confiável comparar um);
+  teste verifica se a soma do tamanho dos quartos está correta);
   
 **DistrictServiceTest.java**
 
@@ -39,6 +39,11 @@ Requisitos funcionais implementados:
 
 * **checkIfPropertySizeIsCorrectTest:** verifica todo o funcionamento da API através de um POST no endpoint 
   "/property/info", comparando por completo, a response retornada e a response esperada;
+* **checkAllValidationExceptionsTest:** envia uma request com 4 erros de validação (nome de propriedade maior que 30 
+  caracteres, nome de quarto com letra minúscula, quarto com largura maior que 25 e com comprimento nulo) e verifica 
+  se todos eles estão contidos na response;
+* **checkDistrictNotFoundInRequestTest:** envia uma request com um nome de bairro inexistente e checa se a exceção 
+  *DistrictNotFoundException* foi lançada.
 
 ## Executar
 

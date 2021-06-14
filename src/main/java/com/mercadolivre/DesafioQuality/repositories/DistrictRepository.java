@@ -11,7 +11,7 @@ import java.util.Optional;
 @Data
 @Repository
 public class DistrictRepository {
-    private final Map<String,Double> districs = Map.ofEntries(
+    private final Map<String,Double> districts = Map.ofEntries(
             Map.entry("Bom Retiro", 40.0),
             Map.entry("Caravelas", 5.0),
             Map.entry("Cariru", 65.0),
@@ -20,6 +20,6 @@ public class DistrictRepository {
     );
 
     public Optional<Double> findByName(String district){
-        return Optional.of(this.getDistrics().get(district));
+        return Optional.ofNullable(this.getDistricts().get(district));
     }
 }
