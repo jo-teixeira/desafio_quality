@@ -16,7 +16,11 @@ Requisitos funcionais implementados:
 * **US-0004:** Determinar a quantidade de metros quadrados que tem cada cômodo de uma propriedade.
 
 **OBS: EXCLUSIVAMENTE PARA ESTE DESAFIO**, não foi implementado a camada de modelo (os dados são representados por 
-uma request e por nao haver persistência de dados, o resultado processado é enviado através de uma response).
+uma request e por nao haver persistência de dados, o resultado processado é enviado através de uma response). Além disso,
+por implementar apenas um endpoint, a função principal a ser acessada pelo PropertyController 
+(*PropertyService.getPropertyInfo()*) ficou com a responsabilidade de chamar todos os métodos para realizar os cálculos 
+dos requisitos solicitados (acabou ficando um pouco sobrecarregada, talvez, mas numa situação normal, as funcionalidades
+seriam divididas em diferentes endpoints).
 
 ## Testes implementados
 
