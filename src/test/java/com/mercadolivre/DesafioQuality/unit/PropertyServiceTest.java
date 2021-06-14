@@ -1,15 +1,9 @@
 package com.mercadolivre.DesafioQuality.unit;
 
-import com.mercadolivre.DesafioQuality.exceptions.DistrictNotFoundException;
-import com.mercadolivre.DesafioQuality.repositories.DistrictRepository;
 import com.mercadolivre.DesafioQuality.requests.PropertyRequest;
-import com.mercadolivre.DesafioQuality.requests.RoomRequest;
 import com.mercadolivre.DesafioQuality.responses.RoomResponse;
-import com.mercadolivre.DesafioQuality.services.DistrictService;
-import com.mercadolivre.DesafioQuality.services.DistrictServiceImpl;
 import com.mercadolivre.DesafioQuality.services.PropertyServiceImpl;
 import com.mercadolivre.DesafioQuality.services.RoomServiceImpl;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,9 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,15 +25,6 @@ public class PropertyServiceTest {
     @InjectMocks
     private PropertyServiceImpl propertyService;
     private final PropertyRequest propertyRequest = new PropertyRequest();
-
-    @BeforeEach
-    void setUp() {
-        propertyRequest.setPropDistrict("Caravelas");
-        propertyRequest.setPropName("Casa do Joao");
-        propertyRequest.setRooms(Arrays.asList(new RoomRequest("RoomA", 25.0, 2.0),
-                                               new RoomRequest("RoomB", 5.0, 10.0),
-                                               new RoomRequest("RoomC", 2.0, 2.0)));
-    }
 
     @Test
     void checkIfPropertySizeIsCorrectTest(){

@@ -30,14 +30,11 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public Double getPropertyValue(Double districtValue, Double propSize) {
-        return districtValue * propSize;
-    }
+    public Double getPropertyValue(Double districtValue, Double propSize) { return districtValue * propSize; }
 
     @Override
     public Double getPropertySize(List<RoomRequest> rooms) {
-        return this.roomService.getAllRoomsResponse(rooms).stream()
-                                                          .map(RoomResponse::getRoomSize)
-                                                          .reduce(0.0, Double::sum);
+        return this.roomService.getAllRoomsResponse(rooms).stream().map(RoomResponse::getRoomSize)
+                                                                   .reduce(0.0, Double::sum);
     }
 }

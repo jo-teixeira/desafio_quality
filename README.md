@@ -17,7 +17,28 @@ Requisitos funcionais implementados:
 
 ## Testes implementados
 
-*inc*
+**PropertyServiceTest.java**
+
+* **checkIfPropertySizeIsCorrectTest:** verifica se *PropertyServicegetPropertySize()* retorna o tamanho correto de uma 
+  propriedade;
+  
+**RoomServiceTest.java**
+
+* **checkGetMaxRoomTest:** verifica se *RoomService.getMaxRoom()* retorna a response correta, com o tamanho do maior 
+  quarto;
+* **checkAllRoomsSize:** verifica se *RoomService.getAllRoomsResponse()* retorna o tamanho correto dos quartos (este 
+  teste verifica se soma total do tamanho dos quartos está correta, seria mais confiável comparar um);
+  
+**DistrictServiceTest.java**
+
+* **checkIfDistrictNotExistsTest:** verifica se *DistrictService.findByName()* retorna uma DistrictNotFoundException 
+  quando é informado um nome de um bairro que não existe;
+* **checkIfDistrictExistsTest:** verifica se *DistrictService.findByName()* retorna o valor correto de um bairro;
+  
+**Testes de integração**
+
+* **checkIfPropertySizeIsCorrectTest:** verifica todo o funcionamento da API através de um POST no endpoint 
+  "/property/info", comparando por completo, a response retornada e a response esperada;
 
 ## Executar
 
@@ -80,21 +101,6 @@ Descrição dos atributos calculados:
 * **max_room_name:** nome do maior quarto;
 * **max_room_size:** tamanho do maior quarto.
 
-## Restrições
-
-*inc*
-* Nomes ate 
-* O bairro tem que existir na base de dados(eles serāo apresentados no final desta documentação).
-
-## Informações adicionais
-
-*inc*
-* O projeto foi desenvolvido utilizando lombok (esta ferramenta fornece anotaçōes para evitar a necessidade de
-  implementar getters, setters e construtores);
-* Mesmo endpoint, falar das exceções, etc...
-* Os bairros foram implementados em uma classe chamada *blabla repository*...
-  
-
 **Bairros ja cadastrados:**
 
 Nome | Valor por metro quadrado
@@ -104,3 +110,14 @@ Caravelas | R$ 5.00 |
 Cariru | R$ 65.00 | 
 Castelo | R$ 100.00 | 
 Imbaubas | R$ 75.00 | 
+
+## Restrições de validação
+
+* O **nome de uma propriedade** não pode ser vazio ou nulo, deve começar com letra maiúscula, e deve ter no máximo 
+  30 caracteres;
+* O **nome do bairro** não pode ser vazio ou nulo, deve ter no máximo 45 caracteres e deve existir na base de dados 
+  (em *com.mercadolivre.DesafioQuality.repositories.DistrictRepository*);
+* O **nome do quarto** não pode ser vazio ou nulo, deve começar com letra maiúscula, e deve ter no máximo
+  30 caracteres;
+* A **largura do cômodo** não pode ser nula e deve valer no mínimo 1 e no maximo 25;
+* O **comprimento do cômodo** não pode ser nula e deve valer no mínimo 1 e no maximo 33;
